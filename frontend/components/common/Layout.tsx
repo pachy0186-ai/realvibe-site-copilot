@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { 
@@ -27,6 +27,11 @@ const navigation = [
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const isActive = (href: string) => {
     if (href === '/site-copilot') {
@@ -140,7 +145,7 @@ export default function Layout({ children }: LayoutProps) {
             
             <div className="flex items-center space-x-4">
               <div className="text-sm text-gray-500">
-                Last updated: {new Date().toLocaleString()}
+                {mounted ? `Last updated: ${new Date().toLocaleString()}` : 'Last updated: --'}
               </div>
             </div>
           </div>
