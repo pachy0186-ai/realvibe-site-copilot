@@ -11,7 +11,7 @@ import uvicorn
 import os
 from dotenv import load_dotenv
 
-from app.api import auth, sites, files, questionnaires, runs, dashboard
+from app.api import auth, sites, files, questionnaires, runs, dashboard, notifications
 from app.core.config import settings
 from app.core.database import init_db
 
@@ -46,6 +46,7 @@ app.include_router(files.router, prefix="/api/v1/files", tags=["Files"])
 app.include_router(questionnaires.router, prefix="/api/v1/questionnaires", tags=["Questionnaires"])
 app.include_router(runs.router, prefix="/api/v1/runs", tags=["Runs"])
 app.include_router(dashboard.router, prefix="/api/v1/dashboard", tags=["Dashboard"])
+app.include_router(notifications.router, prefix="/api/v1/notifications", tags=["Notifications"])
 
 @app.on_event("startup")
 async def startup_event():

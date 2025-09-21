@@ -32,6 +32,12 @@ class Settings(BaseSettings):
     # Gmail Integration
     gmail_credentials_file: Optional[str] = None
     gmail_token_file: Optional[str] = None
+    gmail_credentials_json: Optional[str] = None
+    
+    # Notifications
+    frontend_url: str = "http://localhost:3001"
+    system_admin_email: Optional[str] = None
+    notification_from_email: Optional[str] = None
     
     # Security
     secret_key: str = "your-secret-key-change-in-production"
